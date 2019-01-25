@@ -4,7 +4,9 @@
     {{#each this.data}}
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">{{this.title}}</h4>
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{this.title}}</a>
+          </h4>
         </div>
         <div class="panel-collapse collapse in">
           <div class="panel-body">
@@ -20,3 +22,19 @@
 </div>
 
 
+
+
+<div class="panel-group" id="accordion">
+
+    <div class="panel panel-default">
+     <div class="panel-heading">
+       <h4 class="panel-title">
+         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{this.title}}</a>
+       </h4>
+     </div>
+     <div id="collapse1" class="panel-collapse collapse in">
+       <div class="panel-body"> <h3>description</h3> <p> {{this.description}}</p> <h3>category</h3> <p>{{this.category}}</p> </div>
+     </div>
+
+    </div>
+</div>
