@@ -34,11 +34,10 @@ app.get('/about', (req, res) => {
 })
 
 app.post('/search', (req, res) => {
-  console.log(req.body.title)
   MongoClient.connect("mongodb://localhost:27017/yahoo",(err, client) => {
     if (err) throw err
       var query = {title: new RegExp(req.body.title, 'gmi') }
-      temp = client.db().collection("questions").find(query, {projection: {_id: 0}}).toArray(function(err, data) {
+      temp = client.db().collection("questions").find(query).toArray(function(err, data) {
         res.render('index', {data: data})
         client.close()
     })
