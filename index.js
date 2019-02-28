@@ -11,6 +11,19 @@ var hbs = exphbs.create({
 	defaultLayout: 'main'
 });
 
+var arraySize = 25
+
+
+function splice(arr){
+    fin = [];
+    while(arr.length() > arraySize){
+        fin.push(arr.splice(0,24))
+    }
+    fin.push(arr);
+    return fin; 
+}
+
+
 
 
 app.use(bodyparser.urlencoded({extended: true}))
@@ -34,11 +47,14 @@ app.get('/about', (req, res) => {
 })
 
 app.post('/search', (req, res) => {
+   
   MongoClient.connect("mongodb://localhost:27017/yahoo",(err, client) => {
     if (err) throw err
       var query = {title: new RegExp(req.body.title, 'gmi') }
       temp = client.db().collection("questions").find(query).toArray(function(err, data) {
-        res.render('index', {data: data})
+        arr = splice(data) 
+        page = 0 + parseInt(req.body.page, 10)
+        res.render('index', {data: arr[page],page:page,maxpages:arr.length()})
         client.close()
     })
   });
