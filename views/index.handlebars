@@ -21,10 +21,10 @@
   </div>
   <div class='bottomthing'>
     <form action='/search' method='post'>
-    <input type="hidden" value="{{this.search}}">
+    <input type="hidden" name='title' value="{{this.title}}">
     <ul>
         {{#each this.pagenums}}
-            <li><input type="submit" value="{{this}}">{{this}}</input></li>
+            <li><input type="submit" name='page' value="{{this}}">{{this}}</input></li>
         {{/each}}
     </ul>
     </form>

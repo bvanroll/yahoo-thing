@@ -54,7 +54,7 @@ app.post('/search', (req, res) => {
       temp = client.db().collection("questions").find(query).toArray(function(err, data) {
         arr = splice(data) 
         page = 0 + parseInt(req.body.page, 10)
-        res.render('index', {search:req.body.title, data: arr[page],page:page,pagenums:Array.from(new Array(arr.length), (x,i) => i),maxpages:arr.length})
+        res.render('index', {title:req.body.title, data: arr[page],page:page,pagenums:Array.from(new Array(arr.length), (x,i) => i),maxpages:arr.length})
         client.close()
     })
   });
