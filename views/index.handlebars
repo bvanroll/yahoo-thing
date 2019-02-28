@@ -19,4 +19,14 @@
       </div>
     {{/each}}
   </div>
+  <div class='bottomthing'>
+    <form action='/search'> method='post'>
+    <input type="hidden" value="{{this.search}}">
+    <ul>
+        {{#each this.pagenums}}
+            <li><input type="submit" value="{{this}}">{{this}}</input></li>
+        {{/each}}
+    </ul>
+    </form>
+  </div>
 </div>
