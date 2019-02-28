@@ -16,7 +16,7 @@ var arraySize = 25
 
 function splice(arr){
     fin = [];
-    while(arr.length() > arraySize){
+    while(arr.length > arraySize){
         fin.push(arr.splice(0,24))
     }
     fin.push(arr);
